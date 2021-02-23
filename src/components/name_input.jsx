@@ -5,18 +5,12 @@ export const NameInput = (props) => {
     const {name, setName} = useContext(FormContext)
     const handleInputChange = (e) => {
         setName(e.currentTarget.value)
-        
     }
-    
-    // only pulling key value name and set name
-    
-    return (
         
+    return (
         <div>
-            <p>hi {name}</p>
-            <input onChange={handleInputChange}>
-            </input>
+            <p role="name-text">name: {name}</p>
+            <input value={name} onChange={handleInputChange} role="name-input" />    
         </div>
     )
-
 }
