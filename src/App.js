@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
 import './App.css';
+import {NameInput} from "./components/name_input"
+import {DateInput} from "./components/date_input"
+
+
+// let formState = {
+//   name: "",
+//   birthday: "",
+//   favoriteColor: "",
+//   setName: () => {}
+// };
+
+export const FormContext = React.createContext({});
 
 function App() {
+  const [name, setName] = useState("");
+  const [date, setDate] = useState(""); 
+  const [color, setColor] = useState(""); 
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <FormContext.Provider value={{ 
+      name, setName, 
+      date, setDate, 
+      color, setColor 
+      }}>
+      <NameInput/>
+      <DateInput/>
+    </FormContext.Provider>
   );
 }
 
